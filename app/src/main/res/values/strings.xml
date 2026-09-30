@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">WifiSpoofer</string>
+    <string name="btn_sync">🛰 Синхронизировать эфир</string>
+    <string name="btn_clear">🗑 Очистить кэш</string>
+    <string name="status_idle">Ожидание…</string>
+    <string name="status_fetching_location">Определяю координаты…</string>
+    <string name="status_fetching_wifi">Загружаю Wi-Fi сети…</string>
+    <string name="status_done">✅ Готово! Сетей загружено: %d</string>
+    <string name="status_error">❌ Ошибка: %s</string>
+    <string name="scope_title">Применить к приложениям:</string>
+
+    <string-array name="xposed_scope">
+        <item>com.google.android.gms</item>
+    </string-array>
+</resources>

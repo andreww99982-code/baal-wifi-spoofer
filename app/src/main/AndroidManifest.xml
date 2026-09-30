@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@drawable/ic_wifi"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:theme="@style/Theme.WifiSpoofer"
+        android:supportsRtl="true">
+
+        <!-- Xposed / LSPosed метаданные -->
+        <meta-data android:name="xposedmodule" android:value="true" />
+        <meta-data android:name="xposeddescription"
+            android:value="Wi-Fi environment spoofer based on geolocation" />
+        <meta-data android:name="xposedminversion" android:value="93" />
+        <meta-data android:name="xposedscope" android:resource="@array/xposed_scope" />
+        <!-- Новый механизм XSharedPreferences в LSPosed (вместо WORLD_READABLE) -->
+        <meta-data android:name="xposedsharedprefs" android:value="true" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- exported=true: запасной канал IPC для хуков, если XSharedPreferences
+             не работает на вашей версии LSPosed. См. ConfigProvider.kt -->
+        <provider
+            android:name=".config.ConfigProvider"
+            android:authorities="com.wifispoofer.config"
+            android:exported="true" />
+
+    </application>
+</manifest>
