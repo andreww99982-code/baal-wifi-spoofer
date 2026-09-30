@@ -1,8 +1,9 @@
 # WifiSpoofer — LSPosed-модуль (Android 10–15)
 
 Сборка: открыть папку в Android Studio (Ladybug+, JDK 17) → Build → Build APK(s).
-gradle-wrapper.jar/gradlew не включены — Android Studio подтянет Gradle 8.9 сам
-(или выполните `gradle wrapper` в корне).
+Локально APK собирается командой `./gradlew assembleDebug`. В GitHub Actions сборка
+проверяется на Node.js 20 и 24; Node нужен только для совместимости CI, приложение
+собирается Gradle под JDK 17.
 
 Установка: APK → LSPosed → включить модуль → выбрать scope → перезагрузка → в приложении «Синхронизировать эфир».
 
